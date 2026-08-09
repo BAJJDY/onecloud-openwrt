@@ -1,0 +1,6 @@
+#!/bin/sh
+
+uci set harbor_file.main.sign="BAJJDY"
+uci commit harbor_file
+
+exit 0

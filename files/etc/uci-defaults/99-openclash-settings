@@ -1,0 +1,8 @@
+#!/bin/sh
+
+uci set openclash.config.config_path="/etc/openclash/config/OneCloud.yaml"
+uci set openclash.config.enable="1"
+uci set openclash.config.auto_update="0"
+uci commit openclash
+
+exit 0

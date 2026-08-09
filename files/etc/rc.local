@@ -1,0 +1,12 @@
+# Bypass router disconnect self-healing script
+# Pings gateway every hour, restarts network if unreachable
+(
+	while true; do
+		sleep 3600
+		if ! ping -c 3 -W 5 192.168.8.1 > /dev/null 2>&1; then
+			/etc/init.d/network restart
+		fi
+	done
+) &
+
+exit 0
