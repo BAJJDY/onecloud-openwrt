@@ -19,5 +19,5 @@ sed -i 's/192.168.1.1/192.168.10.99/g' package/base-files/files/bin/config_gener
 # Modify hostname
 sed -i 's/LEDE/OneCloud/g' package/base-files/files/bin/config_generate
 
-# 替换终端为bash
-sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd
+# NOTE: bash replacement disabled - bash is excluded from .config
+# sed -i 's/\/bin\/ash/\/bin\/bash/' package/base-files/files/etc/passwd
