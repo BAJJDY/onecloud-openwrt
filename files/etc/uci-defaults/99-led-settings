@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Initialize LED state on first boot
+state=$(uci -q get onecloud-led.main.state)
+if [ -z "$state" ]; then
+    uci set onecloud-led.main=led
+    uci set onecloud-led.main.state='1'
+    uci commit onecloud-led
+fi
+
+# Apply LED state
+/usr/bin/onecloud-led.sh $([ "${state:-1}" = "1" ] && echo "on" || echo "off")
+
+# Enable LED init script
+/etc/init.d/onecloud-led enable 2>/dev/null
+
+exit 0

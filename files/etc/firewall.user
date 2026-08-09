@@ -1,2 +1,3 @@
-# Bypass router SNAT rule
-iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE
+# Bypass router firewall rules (nftables)
+# SNAT/MASQUERADE is handled by lan zone masq option in /etc/config/firewall
+# Add custom nftables rules below if needed

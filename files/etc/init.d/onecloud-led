@@ -1,0 +1,13 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+
+start() {
+    local state=$(uci -q get onecloud-led.main.state)
+    state=${state:-1}
+    /usr/bin/onecloud-led.sh $([ "$state" = "1" ] && echo "on" || echo "off")
+}
+
+stop() {
+    /usr/bin/onecloud-led.sh off
+}

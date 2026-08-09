@@ -1,0 +1,2 @@
+config led 'main'
+	option state '1'

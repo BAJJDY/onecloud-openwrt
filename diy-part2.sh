@@ -43,6 +43,10 @@ fi
 
 # ========== Set executable permissions for scripts ==========
 chmod +x files/etc/rc.local 2>/dev/null
+chmod +x files/etc/firewall.user 2>/dev/null
+chmod +x files/usr/bin/onecloud-led.sh 2>/dev/null
+chmod +x files/etc/init.d/onecloud-led 2>/dev/null
 chmod +x files/etc/uci-defaults/99-openclash-settings 2>/dev/null
 chmod +x files/etc/uci-defaults/99-harbor-settings 2>/dev/null
-chmod +x files/etc/firewall.user 2>/dev/null
+chmod +x files/etc/uci-defaults/99-vsftpd-settings 2>/dev/null
+chmod +x files/etc/uci-defaults/99-led-settings 2>/dev/null

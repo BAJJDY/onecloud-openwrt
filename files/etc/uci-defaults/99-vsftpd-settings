@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Enable vsftpd with local user access
+uci -q batch <<EOF
+set vsftpd.main=vsftpd
+set vsftpd.main.anonymous_enable='NO'
+set vsftpd.main.local_enable='YES'
+set vsftpd.main.write_enable='YES'
+set vsftpd.main.local_umask='022'
+set vsftpd.main.dirmessage_enable='YES'
+set vsftpd.main.xferlog_enable='YES'
+set vsftpd.main.connect_from_port_20='YES'
+set vsftpd.main.listen='YES'
+set vsftpd.main.listen_ipv6='NO'
+set vsftpd.main.chroot_local_user='YES'
+set vsftpd.main.allow_writeable_chroot='YES'
+set vsftpd.main.ftpd_banner='Welcome to OneCloud FTP'
+set vsftpd.main.max_clients='5'
+set vsftpd.main.max_per_ip='2'
+set vsftpd.main.idle_session_timeout='300'
+set vsftpd.main.data_connection_timeout='120'
+commit vsftpd
+EOF
+
+# Enable and start service
+/etc/init.d/vsftpd enable 2>/dev/null
+
+exit 0
