@@ -1,0 +1,2 @@
+-- vsftpd LuCI menu disabled by uci-defaults
+-- This file prevents the vsftpd controller from loading

@@ -1,8 +1,12 @@
 #!/bin/sh
 
-uci set openclash.config.config_path="/etc/openclash/config/OneCloud.yaml"
+# OpenClash: 默认关闭，不预置配置文件
 uci set openclash.config.enable="0"
 uci set openclash.config.auto_update="0"
 uci commit openclash
+
+# 删除预置的配置文件（如有）
+rm -f /etc/openclash/config/*.yaml 2>/dev/null
+rm -f /etc/openclash/config/*.yml 2>/dev/null
 
 exit 0

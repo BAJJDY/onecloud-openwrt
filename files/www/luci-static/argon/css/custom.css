@@ -1,0 +1,20 @@
+/* Argon Theme Custom CSS - OneCloud 旁路由定制 */
+
+/* 登录页必应每日壁纸 */
+body.login-page .main-bg {
+    background-image: url('https://api.paugram.com/bing/') !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+/* 主界面右下角版本信息隐藏 */
+#footer .version,
+#footer .branch,
+#footer .revision {
+    display: none !important;
+}
+
+/* 登录页底部 Powered by OpenWrt */
+.login-page footer {
+    text-align: center !important;
+}

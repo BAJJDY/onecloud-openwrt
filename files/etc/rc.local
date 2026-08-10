@@ -1,5 +1,13 @@
-# Bypass router disconnect self-healing script
-# Pings gateway every hour, restarts network if unreachable
+# ========== Fake-IP 黑洞路由 ==========
+# 防止 clash 崩溃时假 IP 流量误走向主路由
+ip route add blackhole 198.18.0.0/16 2>/dev/null
+
+# ========== OpenClash 自愈守护 ==========
+/usr/share/openclash/openclash_crash_guard.sh &
+( while true; do sleep 30; /usr/share/openclash/openclash_crash_guard.sh; done ) &
+
+# ========== 旁路由断线自愈 ==========
+# 每小时 ping 网关，失败则重启网络
 (
 	while true; do
 		sleep 3600

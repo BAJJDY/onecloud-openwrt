@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Enable vsftpd with local user access
+# ========== vsftpd 配置 ==========
 uci -q batch <<EOF
 set vsftpd.main=vsftpd
 set vsftpd.main.anonymous_enable='NO'
@@ -22,7 +22,24 @@ set vsftpd.main.data_connection_timeout='120'
 commit vsftpd
 EOF
 
-# Enable and start service
+# 隐藏 vsftpd LuCI 菜单：重命名控制器文件
+if [ -f /usr/lib/lua/luci/controller/vsftpd.lua ]; then
+    mv /usr/lib/lua/luci/controller/vsftpd.lua /usr/lib/lua/luci/controller/vsftpd.lua.disabled
+fi
+
+# 启用 vsftpd 服务
 /etc/init.d/vsftpd enable 2>/dev/null
+
+# ========== SSH (dropbear) 配置 ==========
+uci -q batch <<EOF
+set dropbear.main=dropbear
+set dropbear.main.Port='22'
+set dropbear.main.PasswordAuth='on'
+set dropbear.main.RootPasswordAuth='on'
+set dropbear.main.RootLogin='1'
+commit dropbear
+EOF
+
+/etc/init.d/dropbear enable 2>/dev/null
 
 exit 0

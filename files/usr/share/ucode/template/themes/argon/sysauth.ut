@@ -30,7 +30,7 @@
         let cfg = cursor();
 
         function selectBackground(themeDir) {
-                let bgUrl = "https://bing.com/th?id=OHR.Auto";
+                let bgUrl = "https://api.paugram.com/bing/";
                 let backgroundType = "Image";
                 let mimeType = "";
                 return {bgUrl, backgroundType, mimeType};
